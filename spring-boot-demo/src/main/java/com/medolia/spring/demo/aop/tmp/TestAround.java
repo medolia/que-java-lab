@@ -1,4 +1,4 @@
-package com.medolia.spring.demo.aop;
+package com.medolia.spring.demo.aop.tmp;
 
 import java.lang.annotation.*;
 
@@ -9,5 +9,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface NeedAroundLog {
+public @interface TestAround {
 }

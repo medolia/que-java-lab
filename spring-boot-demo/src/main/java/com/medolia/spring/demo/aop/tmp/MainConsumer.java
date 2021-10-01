@@ -1,4 +1,4 @@
-package com.medolia.spring.demo.aop;
+package com.medolia.spring.demo.aop.tmp;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class MainConsumer {
 
-    @NeedAroundLog
+    @TestAround
     public void proceedMessage(String message) {
         log.info("start to proceed message: {}", message);
     }
