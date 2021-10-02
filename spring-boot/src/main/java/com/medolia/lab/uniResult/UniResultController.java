@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UniResultController {
 
-    @GetMapping("/demo")
+    @GetMapping(value = "/demo")
     public String demo() {
         return "hello, this is demo data";
     }
 
-    @GetMapping("/demo/1")
+    @GetMapping(value = "/demo/1")
     public Integer demo1() {
         return 114;
     }
 
-    @GetMapping("/error")
+    @GetMapping(value = "/error")
     public void error() {
         throw new RuntimeException("demo error");
     }
