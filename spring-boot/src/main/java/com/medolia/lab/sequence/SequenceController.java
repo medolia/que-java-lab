@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SequenceController {
 
     @Autowired
-    private ObjectMapper jacksonObjectMapper;
+    private ObjectMapper objectMapper;
 
     @GetMapping("/sequence/demo")
     public String demo() throws Exception {
@@ -24,7 +24,7 @@ public class SequenceController {
             setInitial(1);
             setSuffix(".json");
         }};
-        String str = jacksonObjectMapper.writeValueAsString(generator);
+        String str = objectMapper.writeValueAsString(generator);
         log.info(str);
         return str;
     }
