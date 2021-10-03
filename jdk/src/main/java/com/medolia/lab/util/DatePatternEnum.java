@@ -1,4 +1,4 @@
-package com.medolia.lab;
+package com.medolia.lab.util;
 
 /**
  * @author lbli
