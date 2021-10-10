@@ -32,7 +32,7 @@ public class GuavaCacheTest {
         // 耗时 ｜ 结果
         ImmutablePair<Long, BigInteger> rawRes = calculate(n, false);
         ImmutablePair<Long, BigInteger> cacheRes = calculate(n, true);
-        assertTrue(rawRes.left > cacheRes.left * 5);
+        assertTrue(rawRes.left > cacheRes.left * 3);
         assertEquals(rawRes.right, cacheRes.right);
 
     }

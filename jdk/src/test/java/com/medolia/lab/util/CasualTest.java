@@ -90,7 +90,7 @@ class CasualTest {
         Comparator<TempDTO> customizeComparator = comparingInt(TempDTO::getPersonId);
         List<TempDTO> result = temperatureList.stream().collect(
                 collectingAndThen(
-                        // 1. 将所有元素置入含有去重比较器的集合中，一般是 TreeSet
+                        // 1. 将所有元素置入含有比较器的去重集合中，一般是 TreeSet
                         toCollection(() -> new TreeSet<>(customizeComparator)),
                         // 2. 去重后的元素置入新的容器里
                         Lists::newArrayList));
