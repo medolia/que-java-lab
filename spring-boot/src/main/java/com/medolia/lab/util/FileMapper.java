@@ -43,7 +43,7 @@ public class FileMapper {
      * <p>
      * guava 的方法 memoize(Supplier) 返回一个 get() 方法带双重检查锁逻辑的 supplier，
      * 从源码看，每次调用 get() 都会显式创建一个新的对象重新计算，所以带双重检查只是为了线程安全；
-     * memoization 只会让某个调用更快地返回，而并没有缓存结果；
+     * memoization 只会让某个调用更快地返回，而并没有缓存复用结果；
      */
     private static Map<String, String> getMap() {
         Supplier<Map<String, String>> mapSupplier = () -> {
@@ -63,7 +63,8 @@ public class FileMapper {
                     e -> String.valueOf(e.getValue()),
                     (e1, e2) -> e2));
         };
-        Supplier<Map<String, String>> delegate = memoizeWithLog(mapSupplier);
+        Supplier<Map<String, String>> delegate = Suppliers.memoize(mapSupplier);
+        // delegate = memoizeWithLog(mapSupplier);
         return delegate.get();
     }
 

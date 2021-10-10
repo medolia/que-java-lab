@@ -25,7 +25,7 @@ public class SequenceController {
             setSuffix(".json");
         }};
         String str = objectMapper.writeValueAsString(generator);
-        log.info(str);
+        log.info("demo:{} ", str);
         return str;
     }
 }
