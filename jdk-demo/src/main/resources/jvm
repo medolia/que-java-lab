@@ -1,0 +1,55 @@
+
+--- memory ---
+-Xms12288m // 堆初始为 12288 MB
+-Xmx12288m // 堆最大为 12288 MB
+-Xss256k  // 线程栈为 256 KB
+-XX:MetaspaceSize=128m // 永久代初始为 128 MB
+-XX:MaxMetaspaceSize=256m // 永久代最大为 256 MB
+-XX:MinHeapFreeRatio=30 // GC 后堆可用空间最小为 30%，若低于这个值堆会扩张
+-XX:MaxHeapFreeRatio=50 // GC 后堆可用空间最大为 50%，若高于这个值堆会收缩
+
+--- GC ---
+-XX:+UseG1GC // 使用 G1 收集器
+-XX:MaxGCPauseMillis=200 // （非强制）最大 GC 停顿时间为 200 ms
+-XX:ParallelGCThreads=8 // 并行 GC 线程数为 8
+-XX:ConcGCThreads=8 // 并发 GC 时线程数为 8
+-XX:+PrintGC // 输出 GC 信息
+-XX:+PrintGCDetails // 输出 GC 详细信息
+-XX:+PrintGCDateStamps // 每次 GC 时输出时间戳
+-Xloggc:/opt/logs/100032087/gc.log // 指定 GC 日志输出文件
+-XX:+UseGCLogFileRotation // 启用 GC 日志轮转
+-XX:NumberOfGCLogFiles=5 // 轮转日志文件数量
+-XX:GCLogFileSize=32M // 单个轮转日志文件大小
+
+--- other ---
+-XX:-OmitStackTraceInFastThrow // 关闭热代码抛异常时的省略栈输出（为优化 jdk 默认开启，导致热代码报错时看不到栈）
+-XX:CICompilerCount=4 // 编译器编译线程数
+-XX:+PreserveFramePointer // 保留栈帧指针
+-XX:+HeapDumpOnOutOfMemoryError // OOM 时导出堆至文件
+-XX:HeapDumpPath=/opt/logs/100032087 // 指定 OOM 堆导出的文件位置
+
+--- -D<property>=<value> 设置系统变量 通过 System.getProperty(<prorperty>) 读取值 ---
+-Djava.util.concurrent.ForkJoinPool.common.parallelism=8
+-Djava.util.concurrent.ForkJoinPool.common.threadFactory=com.ctrip.forkjoinworkerthreadfactory.CtripForkJoinWorkerThreadFactory
+-Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties
+-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+-Djava.security.egd=file:/dev/./urandom
+-Djava.rmi.server.hostname=10.58.26.200
+-Djava.io.tmpdir=/opt/tomcat/temp
+-Dcom.sun.management.jmxremote
+-Dcom.sun.management.jmxremote.authenticate=false
+-Dcom.sun.management.jmxremote.ssl=false
+-Dcom.sun.management.jmxremote.port=8780
+-Dcom.sun.management.jmxremote.rmi.port=8780
+-Dcom.sun.management.jmxremote.local.only=false
+-Dcatalina.base=/opt/tomcat
+-Dcatalina.home=/opt/tomcat
+-Dport.http.server=8080
+-Dport.shutdown.server=8081
+-Dlog.server=/opt/logs/100032087
+-Ddocbase.server=/opt/app
+-Dvdir.server=
+-DAPPLOGDIR=/opt/logs/100032087/applog
+-Djdk.tls.ephemeralDHKeySize=2048
+-Dignore.endorsed.dirs=
+
