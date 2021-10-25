@@ -1,0 +1,62 @@
+package com.medolia.demo.jvm;
+
+import org.assertj.core.util.Lists;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Spliterator;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
+
+/**
+ * @author lbli@trip.com
+ * @since 0.0.1
+ */
+public class StreamTest {
+    @Test
+    void tryAdvanceDemo() {
+        List<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(1);
+        list.add(3);
+        Spliterator<Integer> spliterator = list.stream().spliterator();
+        final AtomicInteger round = new AtomicInteger(1);
+        final AtomicInteger loop = new AtomicInteger(1);
+        while (spliterator.tryAdvance(num -> System.out.printf("第%d轮回调Action,值:%d\n", round.getAndIncrement(), num))) {
+            System.out.printf("第%d轮循环\n", loop.getAndIncrement());
+        }
+    }
+
+    @Test
+    void testForEachRemaining() {
+        List<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(1);
+        list.add(3);
+        Spliterator<Integer> spliterator = list.stream().spliterator();
+        final AtomicInteger round = new AtomicInteger(1);
+        spliterator.forEachRemaining(num -> System.out.printf("[第一次遍历forEachRemaining]第%d轮回调Action,值:%d\n", round.getAndIncrement(), num));
+        round.set(1);
+        spliterator.forEachRemaining(num -> System.out.printf("[第二次遍历forEachRemaining]第%d轮回调Action,值:%d\n", round.getAndIncrement(), num));
+    }
+
+    /**
+     * ArrayList Spliterator.trySplit() 实现：对半分，类似于归并排序时的递归
+     */
+    @Test
+    void testTrySplit() {
+        List<Integer> arr1 = Lists.newArrayList();
+        // 1 - 19
+        IntStream.range(1,20).forEach(arr1::add);
+        Spliterator<Integer> spliterator = arr1.spliterator();
+        // 分隔出去的: 1-9
+        Spliterator<Integer> sp1 = spliterator.trySplit();
+        // 剩余（保留）的 10-19
+        Spliterator<Integer> sp2 = spliterator;
+        System.out.println("---sp1---");
+        sp1.forEachRemaining(System.out::println);
+        System.out.println("---sp2---");
+        sp2.forEachRemaining(System.out::println);
+    }
+}
