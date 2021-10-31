@@ -11,6 +11,8 @@ import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +29,17 @@ import static java.util.stream.Collectors.toCollection;
  */
 @Slf4j
 class CasualTest {
+
+    @Test
+    void testDecimal() {
+        String result = new BigDecimal("100")
+                .subtract(new BigDecimal("15.6900002350"))
+                .divide(BigDecimal.TEN, 1, RoundingMode.HALF_UP)
+                .stripTrailingZeros()
+                .toPlainString();
+
+        System.out.println(result);
+    }
 
     @Test
     void random() {

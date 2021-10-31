@@ -67,15 +67,15 @@ public class Java8TimeApiTest {
         log.info("utc:{}, defaultClock:{}", utc.millis(), defaultClock.millis());
     }
 
+    /**
+     * 注意，ZoneDateTime.of(LocalDateTime, ZoneId) 只能设置时区，内部不负责转变为正确时间；
+     * 如果需要准确时间，需要调用 now(ZoneId)
+     */
     @Test
     public void testTimeZone() {
-        //设置时区
         ZoneId america = ZoneId.of("America/New_York");
-        /*log.info("all zone id:");
-        ZoneId.getAvailableZoneIds().forEach(log::info);*/
-
-        LocalDateTime now = LocalDateTime.now();
-
+        // 获取指定时区的当前日期时间
+        LocalDateTime now = LocalDateTime.now(america);
         ZonedDateTime dateAndTimeInNewYork = ZonedDateTime.of(now, america);
         log.info("现在的日期和时间在特定的时区 : " + dateAndTimeInNewYork);
     }
