@@ -1,4 +1,4 @@
-package com.medolia.demo.retry;
+package com.medolia.demo.retry.spring;
 
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
