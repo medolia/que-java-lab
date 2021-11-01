@@ -1,4 +1,4 @@
-package com.medolia.demo.retry;
+package com.medolia.demo.retry.spring;
 
 import com.medolia.demo.retry.manual.DefaultRetryListener;
 import com.medolia.demo.retry.manual.FastRetryStrategy;

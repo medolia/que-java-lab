@@ -17,6 +17,16 @@ import java.util.stream.IntStream;
 public class CasualTest {
 
     @Test
+    void testMark() {
+        long flag = 137472577537L;
+        String binaryString = Long.toBinaryString(flag);
+        for (int i = 0; i < binaryString.toCharArray().length; i++) {
+            System.out.printf("%s: %s\n", i, binaryString.charAt(i));
+        }
+
+    }
+
+    @Test
     void testObj() {
         Map<String, List<Integer>> map = new HashMap<>();
         map.put("1", Lists.newArrayList(1));
