@@ -1,11 +1,9 @@
 package com.medolia.spring.demo.event;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
-import java.util.Date;
 
 /**
  * @author lbli@trip.com

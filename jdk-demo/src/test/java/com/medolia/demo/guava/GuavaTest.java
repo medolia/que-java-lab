@@ -78,7 +78,6 @@ class GuavaTest {
                 "green",
                 "blue",
                 "purple");
-
     }
 
     @Test

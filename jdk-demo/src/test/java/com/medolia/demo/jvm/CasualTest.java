@@ -18,11 +18,13 @@ public class CasualTest {
 
     @Test
     void testMark() {
-        long flag = 137472577537L;
+        /*long flag = 137472577537L;
         String binaryString = Long.toBinaryString(flag);
         for (int i = 0; i < binaryString.toCharArray().length; i++) {
             System.out.printf("%s: %s\n", i, binaryString.charAt(i));
-        }
+        }*/
+
+        System.out.println(100032087 % 20);
 
     }
 
