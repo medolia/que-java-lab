@@ -3,9 +3,11 @@ package com.medolia.demo.jvm;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Timestamp;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -29,6 +31,28 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 @Slf4j
 public class Java8TimeApiTest {
+    @Test
+    void scaleTest() throws Exception {
+        int i = 0;
+        while (i++ < 2000) {
+            LocalDateTime now = LocalDateTime.now();
+            Thread.sleep(0, 37);
+            System.out.println(now.getNano());
+        }
+    }
+
+    @Test
+    void timeZoneTest() {
+        Timestamp timestamp = new Timestamp(1638967356000L);
+
+
+        Instant instant = timestamp.toInstant();
+        Instant instant1 = instant.minusSeconds(29 * 60);
+        Date from = Date.from(instant1);
+        Instant instant2 = from.toInstant();
+        System.out.println("");
+    }
+
     @Test
     public void getCurrentDate() {
         LocalDate today = LocalDate.now();

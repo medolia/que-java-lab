@@ -5,6 +5,7 @@ import lombok.Data;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -15,7 +16,6 @@ import java.util.stream.IntStream;
  * @date 2021/8/16
  */
 public class CasualTest {
-
     @Test
     void testMark() {
         /*long flag = 137472577537L;
@@ -25,7 +25,6 @@ public class CasualTest {
         }*/
 
         System.out.println(100032087 % 20);
-
     }
 
     @Test

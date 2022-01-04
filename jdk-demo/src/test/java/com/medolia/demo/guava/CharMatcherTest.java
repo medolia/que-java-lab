@@ -14,12 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author lbli@trip.com
  * @date 2021/9/9
  */
-public class CharMatcherDemo {
+public class CharMatcherTest {
     /**
      * 给定字符集， retainFrom() 只保留字符集字符
      */
     @Test
-    public void whenRemoveSpecialCharacters_thenRemoved(){
+    public void whenRemoveSpecialCharacters_thenRemoved() {
         String input = "H*el.lo,}12";
         CharMatcher matcher = CharMatcher.javaLetterOrDigit();
         String result = matcher.retainFrom(input);
@@ -54,7 +54,7 @@ public class CharMatcherDemo {
     }
 
     @Test
-    public void whenValidateString_thenValid(){
+    public void whenValidateString_thenValid() {
         String input = "hello";
 
         boolean result = CharMatcher.javaLowerCase().matchesAllOf(input);
