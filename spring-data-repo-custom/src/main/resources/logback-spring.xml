@@ -84,8 +84,8 @@
     <root level="DEBUG">
         <!--appender将会添加到这个loger-->
         <appender-ref ref="consoleLog"/>
-        <appender-ref ref="fileDEBUGLog"/>
-        <appender-ref ref="fileErrorLog"/>
+        <!--<appender-ref ref="fileDEBUGLog"/>
+        <appender-ref ref="fileErrorLog"/>-->
     </root>
 
     <!--    定义指定package的日志级别-->
