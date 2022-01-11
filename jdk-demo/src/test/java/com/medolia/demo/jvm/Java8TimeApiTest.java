@@ -31,6 +31,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 @Slf4j
 public class Java8TimeApiTest {
+
+    @Test
+    void timeZoneTest2() {
+        ZonedDateTime now = ZonedDateTime.now();
+        System.out.println("");
+    }
+
     @Test
     void scaleTest() throws Exception {
         int i = 0;
