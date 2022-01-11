@@ -11,6 +11,8 @@
         <module>dubbo-demo</module>
         <module>spring-boot-demo-retry</module>
         <module>spring-data-repo-custom</module>
+        <module>spring-boot-rest</module>
+        <module>oop-pattern-demo</module>
     </modules>
 
     <parent>

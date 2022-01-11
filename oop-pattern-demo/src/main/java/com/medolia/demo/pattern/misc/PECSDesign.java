@@ -1,4 +1,4 @@
-package com.medolia.demo.pattern;
+package com.medolia.demo.pattern.misc;
 
 import java.util.ArrayDeque;
 import java.util.Collection;

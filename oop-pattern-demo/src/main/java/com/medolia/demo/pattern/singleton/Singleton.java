@@ -1,4 +1,4 @@
-package com.medolia.demo.pattern;
+package com.medolia.demo.pattern.singleton;
 
 import java.util.Objects;
 

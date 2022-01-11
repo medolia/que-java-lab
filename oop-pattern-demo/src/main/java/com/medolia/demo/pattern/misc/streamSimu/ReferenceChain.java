@@ -1,4 +1,4 @@
-package com.medolia.demo.pattern.chain;
+package com.medolia.demo.pattern.misc.streamSimu;
 
 import java.util.ArrayList;
 import java.util.Collection;

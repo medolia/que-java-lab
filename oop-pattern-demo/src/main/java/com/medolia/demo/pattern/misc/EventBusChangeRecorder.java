@@ -1,4 +1,4 @@
-package com.medolia.demo.pattern;
+package com.medolia.demo.pattern.misc;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
