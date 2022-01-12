@@ -1,4 +1,4 @@
-package com.medolia.demo.pattern.misc.streamSimu;
+package com.medolia.demo.refactor.streamSimu;
 
 import java.util.ArrayList;
 import java.util.Collection;
