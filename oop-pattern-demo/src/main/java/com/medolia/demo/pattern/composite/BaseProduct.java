@@ -1,6 +1,5 @@
 package com.medolia.demo.pattern.composite;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import java.math.BigDecimal;
