@@ -13,7 +13,6 @@
         <module>spring-data-repo-custom</module>
         <module>spring-boot-rest</module>
         <module>oop-pattern-demo</module>
-        <module>spring-cloud-demo</module>
     </modules>
 
     <parent>
