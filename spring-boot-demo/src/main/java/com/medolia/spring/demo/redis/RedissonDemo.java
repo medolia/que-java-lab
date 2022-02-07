@@ -3,6 +3,7 @@ package com.medolia.spring.demo.redis;
 import org.redisson.Redisson;
 import org.redisson.api.RBlockingQueue;
 import org.redisson.api.RDelayedQueue;
+import org.redisson.api.RSet;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 
@@ -20,6 +21,7 @@ public class RedissonDemo {
         Config config = new Config();
         config.useSingleServer().setAddress("redis://127.0.0.1:6379");
         RedissonClient redisson = Redisson.create(config);
+
         RBlockingQueue<String> blockingQueue = redisson.getBlockingQueue("dest_queue1");
         RDelayedQueue<String> delayedQueue = redisson.getDelayedQueue(blockingQueue);
 

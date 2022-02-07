@@ -4,16 +4,52 @@ import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Spliterator;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author lbli@trip.com
  * @since 0.0.1
  */
 public class StreamTest {
+
+    @Test
+    void testSequentialAndParallelStream() {
+
+        System.out.println("--- seq ---");
+        List<Integer> listOfNumbers1 = Arrays.asList(1, 2, 3, 4);
+        listOfNumbers1.stream().forEach(number ->
+                System.out.println(number + " " + Thread.currentThread().getName())
+        );
+
+        System.out.println("---multi---");
+        List<Integer> listOfNumbers2 = Arrays.asList(1, 2, 3, 4);
+        listOfNumbers2.parallelStream().forEach(number ->
+                System.out.println(number + " " + Thread.currentThread().getName())
+        );
+    }
+
+    @Test
+    void testStream_givenInfiniteStream_whenLimit_thenReturnLimitElements() {
+        // given
+        Stream<Integer> infiniteStream = Stream.iterate(0, i -> i + 2);
+
+        // when
+        List<Integer> collect = infiniteStream
+                .limit(10)
+                .collect(Collectors.toList());
+
+        // then
+        assertEquals(collect, Arrays.asList(0, 2, 4, 6, 8, 10, 12, 14, 16, 18));
+    }
+
     @Test
     void tryAdvanceDemo() {
         List<Integer> list = new ArrayList<>();
