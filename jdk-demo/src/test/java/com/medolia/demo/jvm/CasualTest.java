@@ -6,6 +6,8 @@ import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -18,13 +20,9 @@ import java.util.stream.IntStream;
 public class CasualTest {
     @Test
     void testMark() {
-        /*long flag = 137472577537L;
-        String binaryString = Long.toBinaryString(flag);
-        for (int i = 0; i < binaryString.toCharArray().length; i++) {
-            System.out.printf("%s: %s\n", i, binaryString.charAt(i));
-        }*/
-
-        System.out.println(100032087 % 20);
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime truncated = now.truncatedTo(ChronoUnit.HOURS);
+        System.out.printf("%s %n %s %n", now, truncated);
     }
 
     @Test
