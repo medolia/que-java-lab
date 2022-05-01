@@ -3,6 +3,7 @@ package com.medolia.demo.jvm;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -16,6 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 @Slf4j
 class StreamCasualTest {
+
+    @Test
+    void emptyList2Map() {
+        ArrayList<Object> list = Lists.newArrayList();
+        Map<Integer, Object> map = list.stream().collect(Collectors.toMap(Object::hashCode, e -> e, (e1, e2) -> e1));
+        System.out.println("");
+    }
 
     static List<String> strings;
     static List<Person> personList;

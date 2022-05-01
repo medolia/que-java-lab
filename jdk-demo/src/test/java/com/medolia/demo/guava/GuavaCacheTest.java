@@ -1,6 +1,5 @@
 package com.medolia.demo.guava;
 
-
 import com.google.common.base.Suppliers;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -17,7 +16,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 /**
  * @author lbli

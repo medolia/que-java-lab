@@ -1,58 +1,97 @@
 package com.medolia.demo.jvm;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.junit.jupiter.api.BeforeAll;
+import com.medolia.demo.util.JsonSerializer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 /**
- * @author lbli
- * @date 2021/12/22
+ * @author lbli@trip.com
+ * @since 0.0.1
  */
 public class ComparatorTest {
 
-
-    private Employee[] someMoreEmployees;
+    List<Employee> employeeList;
 
     @BeforeEach
-    void beforeAll() {
-        someMoreEmployees = new Employee[]{
-                new Employee("Jake", 25, 3000.0, 9922001L),
-                new Employee("Jake", 25, 3000.0, 5924001L),
-                new Employee("Ace", 22, 3000.0, 642300L),
-                new Employee("Keith", 35, 4000.0, 924401L),
-        };
+    public void beforeAll() {
+        String listJson = "[\n" +
+                "  {\n" +
+                "    \"name\": \"John\",\n" +
+                "    \"age\": 25,\n" +
+                "    \"salary\": 3000.0,\n" +
+                "    \"mobile\": 992200\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"name\": \"Ace\",\n" +
+                "    \"age\": 22,\n" +
+                "    \"salary\": 2000.0,\n" +
+                "    \"mobile\": 592400\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"name\": \"Keith\",\n" +
+                "    \"age\": 35,\n" +
+                "    \"salary\": 4000.0,\n" +
+                "    \"mobile\": 392440\n" +
+                "  }\n" +
+                "]";
+        employeeList = JsonSerializer.deserializeToList(listJson, Employee.class);
     }
 
     @Test
-    public void whenThenComparing_thenSortedByAgeName(){
-        Comparator<Employee> employee_Age_Name_Comparator
-                = Comparator.comparing(Employee::getAge)
+    void testComparatorChain() {
+        Comparator<Employee> employeeComparator = Comparator
+                .comparing(Employee::getAge)
+                .thenComparing(Employee::getSalary)
                 .thenComparing(Employee::getName)
-                .thenComparingLong(Employee::getMobile);
+                .thenComparing(Employee::getMobile);
 
-        Arrays.sort(someMoreEmployees, employee_Age_Name_Comparator);
-        System.out.println(List.of(someMoreEmployees));
-        // assertTrue(Arrays.equals(someMoreEmployees, sortedEmployeesByAgeName));
+        employeeList.stream().sorted(Comparator.nullsLast(employeeComparator)).forEach(System.out::println);
     }
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
     static class Employee {
         String name;
         int age;
         double salary;
         long mobile;
 
-        // constructors, getters & setters
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public double getSalary() {
+            return salary;
+        }
+
+        public void setSalary(double salary) {
+            this.salary = salary;
+        }
+
+        public long getMobile() {
+            return mobile;
+        }
+
+        public void setMobile(long mobile) {
+            this.mobile = mobile;
+        }
+
+        @Override
+        public String toString() {
+            return JsonSerializer.serialize(this);
+        }
     }
 }
