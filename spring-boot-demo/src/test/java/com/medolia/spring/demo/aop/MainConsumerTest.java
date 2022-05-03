@@ -7,8 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @author lbli@trip.com
- * @date 2021/8/26
+ * @author lbli
+ * @date 2022/5/1
  */
 @SpringBootTest
 class MainConsumerTest {

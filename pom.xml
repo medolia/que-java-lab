@@ -10,12 +10,14 @@
         <module>spring-boot-demo</module>
         <module>dubbo-demo</module>
         <module>spring-boot-demo-retry</module>
+        <module>arch-game</module>
         <module>spring-data-repo-custom</module>
         <module>spring-boot-rest</module>
         <module>oop-pattern-demo</module>
     </modules>
 
     <parent>
+
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.2</version>
@@ -40,6 +42,12 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>com.medolia</groupId>
+                <artifactId>jdk-demo</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
             <dependency>
