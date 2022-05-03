@@ -24,29 +24,37 @@ public class ContentValidateChain {
 
     public ContentValidateChain(List<ContentValidElement> contentValidElementList) {
         this.contentValidElementList = Objects.requireNonNull(contentValidElementList);
+        sort();
     }
 
     public void addElement(ContentValidElement element) {
         synchronized (lock) {
             this.contentValidElementList.add(element);
-            contentValidElementList.sort(
-                    Comparator.comparing(ContentValidElement::isValid)
-                            .thenComparing(ContentValidElement::order));
+            sort();
         }
+    }
+
+    private void sort() {
+        contentValidElementList.sort(
+                Comparator.comparing(ContentValidElement::isValid)
+                        .thenComparing(ContentValidElement::order));
     }
 
     public ValidateResponse fireChain(BulletScreen content) {
 
         for (ContentValidElement element : this.contentValidElementList) {
             if (!element.isValid()) {
+                log.debug("invalid element: {}", element);
                 continue;
             }
 
             ValidateResponse response = element.validate(content);
             if (!response.isValidateSuccess()) {
                 log.warn("content validate fail, element: {}, reason: {}",
-                        element.getClass().getSimpleName(), response.getDesc());
+                        element, response.getDesc());
                 return response;
+            } else {
+                log.debug("element validate success: {}", element);
             }
         }
 

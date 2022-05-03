@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
@@ -28,6 +28,6 @@ public class BulletScreen {
 
     private String orgContent;
 
-    private Instant videoInstant;
+    private Duration videoInstant;
 
 }
