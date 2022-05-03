@@ -1,5 +1,9 @@
 package com.medolia.arch.game;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -8,6 +12,7 @@ import java.time.LocalDateTime;
  * @author lbli
  * @date 2022/5/2
  */
+@EqualsAndHashCode
 public class BaseBuff implements Buff{
 
     protected String name;

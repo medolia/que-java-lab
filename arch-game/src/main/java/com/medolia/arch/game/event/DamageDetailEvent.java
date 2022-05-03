@@ -2,7 +2,6 @@ package com.medolia.arch.game.event;
 
 import com.medolia.arch.game.Character;
 import com.medolia.arch.game.Damage;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,7 +13,7 @@ import java.math.BigDecimal;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class DamageDetailEvent extends BaseEvent{
+public class DamageDetailEvent extends BaseEvent {
 
     private Character dealer, suffer;
     private BigDecimal orgValue;

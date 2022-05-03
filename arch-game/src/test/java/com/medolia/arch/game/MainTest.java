@@ -10,8 +10,6 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-
 /**
  * @author lbli
  * @date 2022/5/2
@@ -30,11 +28,11 @@ class MainTest {
 
     @Test
     void testDamage() {
-        Character dealer = new Player("dealer").addBuffs(dealerBuff);
+        Character dealer = new Player("dealer").addBuffs(BuffFactory.randomList(5, BuffFactory.TYPE_AGGRE));
 
         List<Character> suffers = Lists.newArrayList();
         IntStream.range(1, 10).forEach(e -> {
-            suffers.add(new Player().addBuffs(sufferBuff));
+            suffers.add(new Player().addBuffs(BuffFactory.randomList(3, BuffFactory.TYPE_DEFEN)));
         });
 
         Event event = dealer.dealDamage(BigDecimal.valueOf(99999), suffers);
