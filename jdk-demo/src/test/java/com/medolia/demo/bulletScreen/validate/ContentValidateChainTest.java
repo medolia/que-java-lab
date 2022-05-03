@@ -2,6 +2,7 @@ package com.medolia.demo.bulletScreen.validate;
 
 import com.medolia.demo.bulletScreen.BulletScreen;
 import com.medolia.demo.bulletScreen.User;
+import com.medolia.demo.util.JsonSerializer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;

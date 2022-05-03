@@ -1,9 +1,6 @@
 package com.medolia.demo.bulletScreen;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -29,5 +26,7 @@ public class BulletScreen {
     private String orgContent;
 
     private Duration videoInstant;
+
+
 
 }
