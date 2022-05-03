@@ -1,6 +1,5 @@
-package com.medolia.demo.jvm.gamble;
+package com.medolia.arch.game.gamble;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.medolia.demo.util.JsonSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
