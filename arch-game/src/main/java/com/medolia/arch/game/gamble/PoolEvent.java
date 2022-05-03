@@ -1,4 +1,4 @@
-package com.medolia.demo.jvm.gamble;
+package com.medolia.arch.game.gamble;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

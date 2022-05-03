@@ -1,4 +1,4 @@
-package com.medolia.demo.jvm.gamble;
+package com.medolia.arch.game.gamble;
 
 import com.medolia.demo.util.JsonSerializer;
 import org.apache.commons.lang3.RandomStringUtils;
