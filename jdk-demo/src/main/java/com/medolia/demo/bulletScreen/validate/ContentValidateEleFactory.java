@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.medolia.demo.bulletScreen.BulletScreen;
 import com.medolia.demo.bulletScreen.User;
-import lombok.ToString;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -22,7 +21,7 @@ public class ContentValidateEleFactory {
         result.add(new PoliticContentValidator());
         result.add(new IntelligentContentValidator(7));
         result.add(new RegexContentValidator(
-                ImmutableList.of(".s", "[arena]"/*, ".*"*/)));
+                ImmutableList.of(".s", "[arena]", "\\b[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}\\b")));
         result.add(new UserTargetContentValidator(ImmutableList.of(new User(), new User(), new User())));
 
         return result;

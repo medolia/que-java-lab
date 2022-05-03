@@ -5,8 +5,11 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
@@ -19,6 +22,7 @@ import java.util.Objects;
  * @author lbli@trip.com
  * @date 2021/7/16
  */
+@Slf4j
 public class JsonSerializer {
 
     private final static ObjectMapper MAPPER;
@@ -37,6 +41,7 @@ public class JsonSerializer {
                         DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                         SerializationFeature.FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS)
                 .build();
+        MAPPER.registerModule(new JavaTimeModule());
         MAPPER.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
@@ -63,6 +68,7 @@ public class JsonSerializer {
         try {
             return MAPPER.readValue(value, type);
         } catch (Exception e) {
+            log.warn("deserialize", e);
             return null;
         }
     }

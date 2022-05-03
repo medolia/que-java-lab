@@ -10,10 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 public class PrintServiceImpl implements PrintService{
     @Override
     public void printInfo() {
-        int retryTime = 10;
-        while (retryTime-- > 0) {
-            log.info("嗯？");
-        }
 
         log.info("medolia, this info shown by class PrintServiceImpl");
     }
