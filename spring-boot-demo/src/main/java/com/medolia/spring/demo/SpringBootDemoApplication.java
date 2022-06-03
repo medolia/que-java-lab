@@ -1,6 +1,5 @@
 package com.medolia.spring.demo;
 
-import com.medolia.spring.demo.validator.MainController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
