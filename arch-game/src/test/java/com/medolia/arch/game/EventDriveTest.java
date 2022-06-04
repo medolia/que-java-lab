@@ -15,7 +15,7 @@ import java.util.stream.IntStream;
  * @date 2022/5/2
  */
 @Slf4j
-class MainTest {
+class EventDriveTest {
 
     List<Buff> dealerBuff = ImmutableList.of(
             new BaseBuff("crack", 1.2),

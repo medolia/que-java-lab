@@ -26,7 +26,7 @@ public class SPELDemo {
     }
 
     @Data
-    private class Order {
+    private static class Order {
 
         private String purchaseName;
 

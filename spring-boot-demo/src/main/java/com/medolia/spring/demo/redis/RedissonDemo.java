@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class RedissonDemo {
 
+    @SuppressWarnings("all")
     public static void main(String[] args) throws InterruptedException, UnsupportedEncodingException {
         Config config = new Config();
         config.useSingleServer().setAddress("redis://127.0.0.1:16379");
