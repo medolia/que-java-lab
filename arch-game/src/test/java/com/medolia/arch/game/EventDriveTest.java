@@ -2,6 +2,9 @@ package com.medolia.arch.game;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.medolia.arch.game.buff.BaseBuff;
+import com.medolia.arch.game.buff.Buff;
+import com.medolia.arch.game.buff.BuffFactory;
 import com.medolia.arch.game.event.Event;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -28,22 +31,11 @@ class EventDriveTest {
 
     @Test
     void testDamage() {
-        Character dealer = new Player("dealer").addBuffs(BuffFactory.randomList(5, BuffFactory.TYPE_AGGRE));
 
-        List<Character> suffers = Lists.newArrayList();
-        IntStream.range(1, 10).forEach(e -> {
-            suffers.add(new Player().addBuffs(BuffFactory.randomList(3, BuffFactory.TYPE_DEFEN)));
-        });
-
-        Event event = dealer.dealDamage(BigDecimal.valueOf(99999), suffers);
-        log.info("event: {}", event.consoleFormat());
     }
 
     @Test
     void testBuff() {
-        BigDecimal orgValue = BigDecimal.valueOf(5739.5);
-        Damage damage = new Damage(orgValue, dealerBuff, sufferBuff);
-        BigDecimal finalValue = damage.finalValue();
-        log.info("final value: {}, detail: {}", finalValue, damage.detail());
+
     }
 }

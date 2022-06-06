@@ -1,4 +1,4 @@
-package com.medolia.arch.game;
+package com.medolia.arch.game.buff;
 
 import java.math.BigDecimal;
 import java.time.Duration;

@@ -1,8 +1,6 @@
-package com.medolia.arch.game;
+package com.medolia.arch.game.buff;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.Duration;

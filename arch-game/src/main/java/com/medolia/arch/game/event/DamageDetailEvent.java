@@ -1,11 +1,10 @@
 package com.medolia.arch.game.event;
 
 import com.medolia.arch.game.Character;
-import com.medolia.arch.game.Damage;
+import com.medolia.arch.game.damage.RawDamage;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.math.BigDecimal;
 
 /**
  * @author lbli
@@ -13,17 +12,16 @@ import java.math.BigDecimal;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@Builder
 public class DamageDetailEvent extends BaseEvent {
 
     private Character dealer, suffer;
-    private BigDecimal orgValue;
-    private Damage damage;
+    private RawDamage damage;
 
-    public DamageDetailEvent(Character dealer, Character suffer, BigDecimal orgValue) {
+    public DamageDetailEvent(Character dealer, Character suffer, RawDamage damage) {
         this.dealer = dealer;
         this.suffer = suffer;
-        this.orgValue = orgValue;
-        this.damage = new Damage(orgValue, dealer.buff(), suffer.buff());
+        this.damage = damage;
     }
 
     @Override
@@ -33,10 +31,10 @@ public class DamageDetailEvent extends BaseEvent {
 
     @Override
     protected String mainContent() {
-        return String.format("<%s> deal %s damage to <%s> (%s)%n",
-                dealer.name(),
-                damage.finalValue(),
-                suffer.name(),
-                damage.detail());
+        return String.format("<%s> deal %s(%s) damage to <%s>",
+                dealer.toString(),
+                damage.getValue(),
+                damage.getElementType().name(),
+                suffer.toString());
     }
 }
