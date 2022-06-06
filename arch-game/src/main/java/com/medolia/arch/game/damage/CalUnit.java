@@ -13,16 +13,20 @@ public class CalUnit {
 
     private String name;
     private double value;
-    private Condition condition;
+    private CalCondition condition;
 
-    public CalUnit(String name, double value, Condition condition) {
+    public CalUnit(String name, double value, CalCondition condition) {
         this.name = name;
         this.value = value;
         this.condition = condition;
     }
 
-    public CalUnit(String name, double value) {
-        this(name, value, Condition.INVALID);
+    private CalUnit(String name, double value) {
+        this(name, value, CalCondition.ALWAYS);
+    }
+
+    public static CalUnit weakPart() {
+        return new CalUnit("weak-part", 1.1);
     }
 
     @SuppressWarnings("all")
@@ -41,7 +45,7 @@ public class CalUnit {
     }
 
     public static CalUnit defaultOpen() {
-        return new CalUnit("open counter", 1.4);
+        return new CalUnit("open counter", 1.4, CalCondition.OPEN);
     }
 
     public static CalUnit defence(double atk, double def) {
@@ -53,11 +57,11 @@ public class CalUnit {
         if (def >= p1) {
             value = 0.1;
         } else if (def >= p2) {
-            value = (19.2 / 49 * Math.sqrt((atk / def) - 0.125) + 0.1) * atk;
+            value = 19.2 / 49 * Math.pow(atk / def - 0.125, 2) + 0.1;
         } else if (def >= p3) {
-            value = (-0.4 / 3 * Math.sqrt(atk / def - 2.5) + 0.7) * atk;
+            value = -0.4 / 3 * Math.pow(atk / def - 2.5, 2) + 0.7;
         } else if (def >= p4) {
-            value = (-0.8 / 121 * Math.sqrt((atk / def - 8)) + 0.9) * atk;
+            value = -0.8 / 121 * Math.pow(atk / def - 8, 2) + 0.9;
         } else {
             value = 0.9;
         }

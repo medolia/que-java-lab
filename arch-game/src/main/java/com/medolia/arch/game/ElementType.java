@@ -1,10 +1,10 @@
-package com.medolia.arch.game.damage;
+package com.medolia.arch.game;
 
 /**
  * @author lbli
  * @date 2022/6/4
  */
-public enum DamageType {
+public enum ElementType {
     /**
      * 物理普通
      */

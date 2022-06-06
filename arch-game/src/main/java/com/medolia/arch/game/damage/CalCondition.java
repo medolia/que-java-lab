@@ -1,18 +1,19 @@
 package com.medolia.arch.game.damage;
 
 import com.google.common.collect.ImmutableSet;
+import com.medolia.arch.game.ElementType;
 
 /**
  * @author lbli
  * @date 2022/6/4
  */
-public enum Condition {
+public enum CalCondition {
     /**
      * 内脏暴击
      */
     VISCERAL_ATK {
         @Override
-        public boolean match(ConditionContext context) {
+        public boolean match(CalContext context) {
             return context.isVisceralATK();
         }
     },
@@ -21,7 +22,7 @@ public enum Condition {
      */
     FULL_HP {
         @Override
-        public boolean match(ConditionContext context) {
+        public boolean match(CalContext context) {
             return context.getHpPercent() >= 1.0;
         }
     },
@@ -30,9 +31,9 @@ public enum Condition {
      */
     PHYSICAL_ALL {
         @Override
-        public boolean match(ConditionContext context) {
-            return ImmutableSet.of(DamageType.PHYSICAL_NORMAL, DamageType.PHYSICAL_BLUNT, DamageType.PHYSICAL_THRUST)
-                    .contains(context.getDamageType());
+        public boolean match(CalContext context) {
+            return ImmutableSet.of(ElementType.PHYSICAL_NORMAL, ElementType.PHYSICAL_BLUNT, ElementType.PHYSICAL_THRUST)
+                    .contains(context.getElementType());
         }
     },
     /**
@@ -40,8 +41,8 @@ public enum Condition {
      */
     LOW_HP {
         @Override
-        public boolean match(ConditionContext context) {
-            return context.getHpPercent() < 0.3;
+        public boolean match(CalContext context) {
+            return context.getHpPercent() < 30;
         }
     },
     /**
@@ -49,7 +50,7 @@ public enum Condition {
      */
     BEAST {
         @Override
-        public boolean match(ConditionContext context) {
+        public boolean match(CalContext context) {
             return context.isFoeIsBeast();
         }
     },
@@ -58,7 +59,7 @@ public enum Condition {
      */
     KIN {
         @Override
-        public boolean match(ConditionContext context) {
+        public boolean match(CalContext context) {
             return context.isFoeIsKin();
         }
     },
@@ -67,7 +68,7 @@ public enum Condition {
      */
     SERRATED {
         @Override
-        public boolean match(ConditionContext context) {
+        public boolean match(CalContext context) {
             return context.isFoeWeakSerrated();
         }
     },
@@ -76,7 +77,7 @@ public enum Condition {
      */
     RIGHTEOUS {
         @Override
-        public boolean match(ConditionContext context) {
+        public boolean match(CalContext context) {
             return context.isFoeWeakRighteous();
         }
     } ,
@@ -85,7 +86,7 @@ public enum Condition {
      */
     OPEN {
         @Override
-        public boolean match(ConditionContext context) {
+        public boolean match(CalContext context) {
             return context.isFoeStayOpen();
         }
     } ,
@@ -94,12 +95,24 @@ public enum Condition {
      */
     INVALID {
         @Override
-        public boolean match(ConditionContext context) {
+        public boolean match(CalContext context) {
             return false;
         }
     } ,
+    /**
+     * 永远有效
+     */
+    ALWAYS {
+        @Override
+        public boolean match(CalContext context) {
+            return true;
+        }
+    }
     ;
 
-    public abstract boolean match(ConditionContext context);
+    /**
+     * take effect when condition matches
+     */
+    public abstract boolean match(CalContext context);
 
 }

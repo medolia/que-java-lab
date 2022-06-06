@@ -1,5 +1,6 @@
 package com.medolia.arch.game.damage;
 
+import com.medolia.arch.game.ElementType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RawDefence {
 
-    private DamageType defenceType;
+    private ElementType defenceType;
     private double value;
 
 }

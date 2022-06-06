@@ -1,5 +1,6 @@
 package com.medolia.arch.game.damage;
 
+import com.medolia.arch.game.ElementType;
 import lombok.Data;
 
 /**
@@ -9,17 +10,17 @@ import lombok.Data;
 @Data
 public class RawDamage {
 
-    private DamageType damageType;
-    private double atk;
+    private ElementType elementType;
+    private double value;
     private boolean isFixed;
 
-    public RawDamage(DamageType damageType, double atk) {
-        this(damageType, atk, false);
+    public RawDamage(ElementType elementType, double value) {
+        this(elementType, value, false);
     }
 
-    public RawDamage(DamageType damageType, double atk, boolean isFixed) {
-        this.damageType = damageType;
-        this.atk = atk;
+    public RawDamage(ElementType elementType, double value, boolean isFixed) {
+        this.elementType = elementType;
+        this.value = value;
         this.isFixed = isFixed;
     }
 }

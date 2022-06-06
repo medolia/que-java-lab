@@ -1,4 +1,4 @@
-package com.medolia.arch.game;
+package com.medolia.arch.game.buff;
 
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.RandomUtils;

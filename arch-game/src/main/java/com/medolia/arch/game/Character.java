@@ -1,39 +1,22 @@
 package com.medolia.arch.game;
 
-import com.medolia.arch.game.event.Event;
-
-import java.math.BigDecimal;
-import java.util.List;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.assertj.core.util.VisibleForTesting;
 
 /**
  * @author lbli
  * @date 2022/5/1
  */
 public interface Character {
-    /**
-     * name
-     * @return
-     */
-    String name();
 
-    /**
-     * deal damage
-     * @param suffers
-     * @return
-     */
-    Event dealDamage(BigDecimal orgValue, List<Character> suffers);
 
-    /**
-     * suffer damage
-     * @param source
-     * @return
-     */
-    //Event sufferDamage(Character source);
-
-    /**
-     * current buff
-     * @return
-     */
-    List<Buff> buff();
-
+    @VisibleForTesting
+    static Character testOne() {
+        return new Character() {
+            @Override
+            public String toString() {
+                return "test-character-" + RandomStringUtils.randomAscii(4);
+            }
+        };
+    }
 }

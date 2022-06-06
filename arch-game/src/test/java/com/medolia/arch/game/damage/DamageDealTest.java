@@ -1,50 +1,53 @@
 package com.medolia.arch.game.damage;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.medolia.arch.game.Character;
-import com.medolia.arch.game.Player;
-import com.medolia.arch.game.event.BaseEvent;
-import com.medolia.arch.game.event.EventTypeEnum;
+import com.medolia.arch.game.ElementType;
+import com.medolia.arch.game.event.DamageDetailEvent;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.medolia.arch.game.damage.Condition.*;
+import static com.medolia.arch.game.damage.CalCondition.*;
 
 /**
  * @author lbli
  * @date 2022/6/4
  */
+@Slf4j
 class DamageDealTest {
 
     @Test
     void testDeal() {
-        DamageDealerInfo dealerInfo = generateDealerInfo();
-        DamageSufferInfo sufferInfo = generateSufferInfo();
-
-
+        DealerInfo dealerInfo = generateDealerInfo();
+        SufferInfo sufferInfo = generateSufferInfo();
+        List<DamageDetailEvent> events = new Calculator(dealerInfo, sufferInfo).cal();
+        log.info("events: {}", events);
     }
 
-    private DamageSufferInfo generateSufferInfo() {
-        DamageSufferInfo res = DamageSufferInfo.builder()
-                .defence(ImmutableList.of(
-                        new RawDefence(DamageType.PHYSICAL_NORMAL, 200),
-                        new RawDefence(DamageType.FIRE, 10)))
+    private SufferInfo generateSufferInfo() {
+
+        return SufferInfo.builder()
+                .suffer(Character.testOne())
+                .defence(ImmutableMap.of(
+                        ElementType.PHYSICAL_NORMAL, new RawDefence(ElementType.PHYSICAL_NORMAL, 200),
+                        ElementType.FIRE, new RawDefence(ElementType.FIRE, 10)))
+                .isOpen(false)
                 .isBeast(true)
                 .isKin(false)
-                .isOpen(false)
-                .isRighteousTgt(false)
                 .isSerratedTgt(true)
+                .isRighteousTgt(false)
+                .allCalUnits(ImmutableList.of(CalUnit.weakPart()))
                 .build();
-
-        return res;
     }
 
-    private DamageDealerInfo generateDealerInfo() {
+    private DealerInfo generateDealerInfo() {
 
-        DamageDealerInfo res = new DamageDealerInfo();
-        RawDamage phyNormal = new RawDamage(DamageType.PHYSICAL_NORMAL, 360);
-        RawDamage firePaper = new RawDamage(DamageType.FIRE, 80, true);
+        DealerInfo res = new DealerInfo();
+        RawDamage phyNormal = new RawDamage(ElementType.PHYSICAL_NORMAL, 360);
+        RawDamage firePaper = new RawDamage(ElementType.FIRE, 80, true);
         res.setAttack(ImmutableList.of(phyNormal, firePaper));
 
         CalUnit fineGem1 = new CalUnit("fine-gem-1", 1.272, PHYSICAL_ALL);
@@ -68,30 +71,11 @@ class DamageDealTest {
                 .add(rune3)
                 .build();
         res.setAllCalUnits(calUnits);
+        res.setVisceralATK(false);
+        res.setHpPercent(100);
+        res.setDealer(Character.testOne());
 
         return res;
-    }
-
-    static class SimpleDamageEvent extends BaseEvent {
-
-        private Character dealer, suffer;
-        private double dmgValue;
-
-        public SimpleDamageEvent(double dmgValue) {
-            this.dealer = new Player("test-player");
-            this.suffer = new Player("test-blood-beast");
-            this.dmgValue = dmgValue;
-        }
-
-        @Override
-        public EventTypeEnum getType() {
-            return EventTypeEnum.DAMAGE_DEAL;
-        }
-
-        @Override
-        protected String mainContent() {
-            return String.format("%s -> %s: %s", dealer, suffer, dmgValue);
-        }
     }
 
 }
