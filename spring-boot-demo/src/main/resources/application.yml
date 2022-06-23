@@ -2,5 +2,5 @@ spring:
   redis:
     database: 0
     host: localhost
-    port: 16379
-    timeout: 60000
+    port: 6379
+    timeout: 6000
