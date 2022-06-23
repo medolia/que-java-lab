@@ -1,0 +1,39 @@
+<configuration>
+
+    <property name="GAMBLE_FILE_PREFIX" value="GambleFile" />
+    <property name="GAMBLE_FILE_DIR" value="logs/gamble"/>
+    <property name="GAMBLE_FILE_POS" value="${user.dir}/${GAMBLE_FILE_DIR}/${GAMBLE_FILE_PREFIX}"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="GAMBLE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${GAMBLE_FILE_POS}.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${GAMBLE_FILE_POS}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
+            <maxFileSize>5MB</maxFileSize>
+            <maxHistory>3</maxHistory>
+            <totalSizeCap>300MB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.medolia.demo.jvm.gamble" level="DEBUG">
+        <appender-ref ref="GAMBLE_FILE" />
+    </logger>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
