@@ -6,6 +6,7 @@ import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -18,6 +19,7 @@ import java.util.stream.IntStream;
  * @date 2021/8/16
  */
 public class CasualTest {
+
     @Test
     void testMark() {
         LocalDateTime now = LocalDateTime.now();

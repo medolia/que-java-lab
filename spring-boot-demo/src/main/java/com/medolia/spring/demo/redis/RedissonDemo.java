@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author lbli@trip.com
- * @since 0.0.1
  */
 public class RedissonDemo {
 

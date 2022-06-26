@@ -5,7 +5,7 @@ import java.lang.reflect.Type;
 import java.math.BigDecimal;
 
 /**
- * @author lbli@trip.com
+ * @author lbli
  * @date 2021/9/9
  */
 public class GenericUtils {

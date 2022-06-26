@@ -18,7 +18,7 @@ import java.util.Objects;
 /**
  * Json 序列化工具
  *
- * @author lbli@trip.com
+ * @author lbli
  * @date 2021/7/16
  */
 @Slf4j

@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author lbli@trip.com
- * @since 0.0.1
  */
 @SpringBootApplication(scanBasePackages = {"com.medolia.demo.springboot.rest"})
 public class ApplicationLauncher {

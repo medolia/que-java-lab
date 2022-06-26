@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * 工具类
  *
- * @author lbli@trip.com
+ * @author lbli
  * @date 2021/8/17
  */
 public class DateUtils {
