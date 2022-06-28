@@ -1,4 +1,4 @@
-package com.medolia.spring.demo.aop.tmp;
+package com.medolia.spring.demo.aop.casual;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class LogAspect {
-    @Around("@annotation(com.medolia.spring.demo.aop.tmp.TestAround)")
+    @Around("@annotation(com.medolia.spring.demo.aop.casual.TestAround)")
     public Object aroundLog(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("before method execution");
         Object proceed = joinPoint.proceed();

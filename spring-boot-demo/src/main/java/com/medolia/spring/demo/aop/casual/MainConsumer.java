@@ -1,4 +1,4 @@
-package com.medolia.spring.demo.aop.tmp;
+package com.medolia.spring.demo.aop.casual;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

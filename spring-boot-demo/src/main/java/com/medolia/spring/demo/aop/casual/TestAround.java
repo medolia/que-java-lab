@@ -1,4 +1,4 @@
-package com.medolia.spring.demo.aop.tmp;
+package com.medolia.spring.demo.aop.casual;
 
 import java.lang.annotation.*;
 

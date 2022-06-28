@@ -45,7 +45,8 @@ public class LogRecordAspect {
                 .category(annotation.category())
                 .condition(annotation.condition())
                 .operator(annotation.operator())
-                .content(parsedContent).build();
+                .content(parsedContent)
+                .build();
 
         if (!CollectionUtils.isEmpty(processors)) {
             processors.forEach(e -> e.consume(context));
@@ -58,6 +59,8 @@ public class LogRecordAspect {
     private String parseContent(String content, JoinPoint joinPoint) {
 
         // {# delivery.address} -> 变量名为 delivery, 调用 getAddress(); {# newAddress} -> 变量名为 newAddress
+        Object[] args = joinPoint.getArgs();
+
 
         return null;
     }

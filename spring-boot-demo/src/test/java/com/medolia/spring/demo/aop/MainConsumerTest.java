@@ -1,6 +1,6 @@
 package com.medolia.spring.demo.aop;
 
-import com.medolia.spring.demo.aop.tmp.MainConsumer;
+import com.medolia.spring.demo.aop.casual.MainConsumer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
