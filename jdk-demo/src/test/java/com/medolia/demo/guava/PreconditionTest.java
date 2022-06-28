@@ -10,7 +10,7 @@ import static com.google.common.base.Preconditions.checkArgument;
  * @author lbli@trip.com
  * @date 2021/9/8
  */
-public class Precondition {
+public class PreconditionTest {
 
 
     @Test
