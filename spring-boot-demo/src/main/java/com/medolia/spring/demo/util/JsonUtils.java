@@ -1,5 +1,6 @@
 package com.medolia.spring.demo.util;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.*;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,11 @@ public class JsonUtils {
         mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
         // 映射
         mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    }
+
+    public static ObjectMapper getMapper() {
+        return mapper;
     }
 
     public static <T> String serialize(T bean) {

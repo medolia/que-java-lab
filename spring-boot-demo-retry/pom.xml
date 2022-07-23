@@ -12,7 +12,7 @@
     <artifactId>spring-boot-demo-retry</artifactId>
     <description>spring boot retry</description>
     <version>0.0.1</version>
-    <packaging>war</packaging>
+    <!--<packaging>war</packaging>-->
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
