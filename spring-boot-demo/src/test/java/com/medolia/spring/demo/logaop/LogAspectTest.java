@@ -14,13 +14,13 @@ import java.util.UUID;
  * @date 2022/5/1
  */
 @SpringBootTest
-class LogAopTest {
+class LogAspectTest {
 
     @Autowired
     private MicroServiceHandler microServiceHandler;
 
     @Test
-    void proceedMessage() {
+    void test() {
         Response response = microServiceHandler.request(
                 Request.getInstance(UUID.randomUUID().toString(), "xenoblade 3 ~", "198892194"),
                 new Request(

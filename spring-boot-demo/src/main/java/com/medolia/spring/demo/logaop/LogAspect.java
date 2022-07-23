@@ -38,6 +38,7 @@ public class LogAspect {
 
     @Around("@annotation(com.medolia.spring.demo.logaop.NeedLog)")
     public Object aroundLog(ProceedingJoinPoint joinPoint) {
+        //region [before]
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         NeedLog needLog = method.getDeclaredAnnotation(NeedLog.class);
@@ -58,6 +59,7 @@ public class LogAspect {
             tags.putAll(tryParseTag(arg, expressions));
             content.append(String.format("%s=%s%n", parameter.getName(), JsonUtils.serialize(arg)));
         }
+        //endregion
 
         Level level = Level.INFO;
         Object result = null;
@@ -67,6 +69,7 @@ public class LogAspect {
             level = Level.ERROR;
         }
 
+        //region [after]
         content.append("[result]: \n").append(JsonUtils.serialize(result));
         Map<String, String> tagsFromResult = tryParseTag(result, needLog.resTags());
 
@@ -82,6 +85,7 @@ public class LogAspect {
         Optional.ofNullable(this.logEntityConsumerList)
                 .orElse(Lists.newArrayList())
                 .forEach(logEntityConsumer -> logEntityConsumer.consume(logEntity));
+        //endregion
 
         return result;
     }
@@ -93,13 +97,13 @@ public class LogAspect {
             assert obj != null && expressions.length > 0;
             JsonNode jsonNode = JsonUtils.getMapper().valueToTree(obj);
             for (String expression : expressions) {
-                JsonNode tmp = jsonNode;
+                JsonNode curr = jsonNode;
                 String finalNode = StringUtils.EMPTY;
                 for (String node : expression.split("\\.")) {
-                    tmp = tmp.path(node);
+                    curr = curr.path(node);
                     finalNode = node;
                 }
-                result.put(finalNode, tmp.toString());
+                result.put(finalNode, curr.toString());
             }
         } catch (Exception e) {
             // ignore
