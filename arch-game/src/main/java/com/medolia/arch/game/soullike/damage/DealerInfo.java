@@ -1,6 +1,6 @@
-package com.medolia.arch.game.damage;
+package com.medolia.arch.game.soullike.damage;
 
-import com.medolia.arch.game.Character;
+import com.medolia.arch.game.soullike.Character;
 import lombok.Data;
 
 import java.util.List;

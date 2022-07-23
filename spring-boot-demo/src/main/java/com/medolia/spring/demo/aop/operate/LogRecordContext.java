@@ -1,4 +1,4 @@
-package com.medolia.spring.demo.aop;
+package com.medolia.spring.demo.aop.operate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

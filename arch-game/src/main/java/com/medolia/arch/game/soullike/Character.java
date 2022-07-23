@@ -1,4 +1,4 @@
-package com.medolia.arch.game;
+package com.medolia.arch.game.soullike;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.assertj.core.util.VisibleForTesting;

@@ -1,7 +1,7 @@
-package com.medolia.arch.game.damage;
+package com.medolia.arch.game.soullike.damage;
 
-import com.medolia.arch.game.ElementType;
-import com.medolia.arch.game.event.DamageDetailEvent;
+import com.medolia.arch.game.soullike.ElementType;
+import com.medolia.arch.game.soullike.event.DamageDetailEvent;
 import org.assertj.core.util.Lists;
 
 import java.util.List;

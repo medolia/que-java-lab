@@ -1,8 +1,8 @@
-package com.medolia.arch.game.damage;
+package com.medolia.arch.game.soullike.damage;
 
-import com.medolia.arch.game.Character;
-import com.medolia.arch.game.ElementType;
-import com.medolia.arch.game.event.DamageDetailEvent;
+import com.medolia.arch.game.soullike.Character;
+import com.medolia.arch.game.soullike.ElementType;
+import com.medolia.arch.game.soullike.event.DamageDetailEvent;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

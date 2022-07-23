@@ -1,4 +1,4 @@
-package com.medolia.spring.demo.aop;
+package com.medolia.spring.demo.aop.operate;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -28,7 +28,7 @@ public class LogRecordAspect {
         this.processors = processors;
     }
 
-    @After("@annotation(com.medolia.spring.demo.aop.LogRecordAnnotation)")
+    @After("@annotation(com.medolia.spring.demo.aop.operate.LogRecordAnnotation)")
     public Object afterComplete(JoinPoint joinPoint) throws Throwable {
 
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();

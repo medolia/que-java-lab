@@ -2,15 +2,16 @@ package com.medolia.arch.game.damage;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.medolia.arch.game.Character;
-import com.medolia.arch.game.ElementType;
-import com.medolia.arch.game.event.DamageDetailEvent;
+import com.medolia.arch.game.soullike.Character;
+import com.medolia.arch.game.soullike.ElementType;
+import com.medolia.arch.game.soullike.damage.*;
+import com.medolia.arch.game.soullike.event.DamageDetailEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.medolia.arch.game.damage.CalCondition.*;
+import static com.medolia.arch.game.soullike.damage.CalCondition.*;
 
 /**
  * @author lbli

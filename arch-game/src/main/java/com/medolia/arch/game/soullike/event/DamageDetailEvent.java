@@ -1,7 +1,7 @@
-package com.medolia.arch.game.event;
+package com.medolia.arch.game.soullike.event;
 
-import com.medolia.arch.game.Character;
-import com.medolia.arch.game.damage.RawDamage;
+import com.medolia.arch.game.soullike.Character;
+import com.medolia.arch.game.soullike.damage.RawDamage;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

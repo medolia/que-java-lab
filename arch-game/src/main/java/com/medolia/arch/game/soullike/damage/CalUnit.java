@@ -1,4 +1,4 @@
-package com.medolia.arch.game.damage;
+package com.medolia.arch.game.soullike.damage;
 
 import com.google.common.collect.ImmutableRangeMap;
 import com.google.common.collect.Range;

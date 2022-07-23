@@ -1,4 +1,4 @@
-package com.medolia.arch.game;
+package com.medolia.arch.game.soullike;
 
 import lombok.Data;
 

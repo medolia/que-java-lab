@@ -1,4 +1,4 @@
-package com.medolia.arch.game.event;
+package com.medolia.arch.game.soullike.event;
 
 import com.medolia.demo.util.DateUtils;
 
